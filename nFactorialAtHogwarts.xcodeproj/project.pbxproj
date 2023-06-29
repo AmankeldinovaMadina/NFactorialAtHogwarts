@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE00D0092A4DDF4A0090276A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D0082A4DDF4A0090276A /* MainView.swift */; };
+		FE10D9A92A4E2B9300CAF339 /* DalidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10D9A82A4E2B9300CAF339 /* DalidaView.swift */; };
 		FE3359A32A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359A22A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift */; };
 		FE3359A52A4DBB280076B3D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359A42A4DBB280076B3D1 /* ContentView.swift */; };
 		FE3359A72A4DBB2C0076B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE3359A62A4DBB2C0076B3D1 /* Assets.xcassets */; };
@@ -16,6 +18,7 @@
 		FE3359B92A4DBB2C0076B3D1 /* nFactorialAtHogwartsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359B82A4DBB2C0076B3D1 /* nFactorialAtHogwartsTests.swift */; };
 		FE3359C32A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359C22A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITests.swift */; };
 		FE3359C52A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359C42A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITestsLaunchTests.swift */; };
+		FE3359D32A4DC5510076B3D1 /* HedwigsTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE3359D22A4DC5500076B3D1 /* HedwigsTheme.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE00D0082A4DDF4A0090276A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FE10D9A82A4E2B9300CAF339 /* DalidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalidaView.swift; sourceTree = "<group>"; };
 		FE33599F2A4DBB280076B3D1 /* nFactorialAtHogwarts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nFactorialAtHogwarts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3359A22A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nFactorialAtHogwartsApp.swift; sourceTree = "<group>"; };
 		FE3359A42A4DBB280076B3D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		FE3359BE2A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nFactorialAtHogwartsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3359C22A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nFactorialAtHogwartsUITests.swift; sourceTree = "<group>"; };
 		FE3359C42A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nFactorialAtHogwartsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE3359D22A4DC5500076B3D1 /* HedwigsTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HedwigsTheme.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +104,15 @@
 		FE3359A12A4DBB280076B3D1 /* nFactorialAtHogwarts */ = {
 			isa = PBXGroup;
 			children = (
+				FE3359D12A4DC52B0076B3D1 /* Media */,
 				FE3359A22A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift */,
 				FE3359A42A4DBB280076B3D1 /* ContentView.swift */,
 				FE3359A62A4DBB2C0076B3D1 /* Assets.xcassets */,
 				FE3359AB2A4DBB2C0076B3D1 /* Persistence.swift */,
 				FE3359AD2A4DBB2C0076B3D1 /* nFactorialAtHogwarts.xcdatamodeld */,
 				FE3359A82A4DBB2C0076B3D1 /* Preview Content */,
+				FE00D0082A4DDF4A0090276A /* MainView.swift */,
+				FE10D9A82A4E2B9300CAF339 /* DalidaView.swift */,
 			);
 			path = nFactorialAtHogwarts;
 			sourceTree = "<group>";
@@ -131,6 +140,14 @@
 				FE3359C42A4DBB2C0076B3D1 /* nFactorialAtHogwartsUITestsLaunchTests.swift */,
 			);
 			path = nFactorialAtHogwartsUITests;
+			sourceTree = "<group>";
+		};
+		FE3359D12A4DC52B0076B3D1 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				FE3359D22A4DC5500076B3D1 /* HedwigsTheme.mp3 */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +256,7 @@
 			files = (
 				FE3359AA2A4DBB2C0076B3D1 /* Preview Assets.xcassets in Resources */,
 				FE3359A72A4DBB2C0076B3D1 /* Assets.xcassets in Resources */,
+				FE3359D32A4DC5510076B3D1 /* HedwigsTheme.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,8 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE3359AF2A4DBB2C0076B3D1 /* nFactorialAtHogwarts.xcdatamodeld in Sources */,
+				FE10D9A92A4E2B9300CAF339 /* DalidaView.swift in Sources */,
 				FE3359AC2A4DBB2C0076B3D1 /* Persistence.swift in Sources */,
 				FE3359A52A4DBB280076B3D1 /* ContentView.swift in Sources */,
+				FE00D0092A4DDF4A0090276A /* MainView.swift in Sources */,
 				FE3359A32A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

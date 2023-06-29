@@ -6,83 +6,112 @@
 //
 
 import SwiftUI
-import CoreData
+import AVKit
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @State private var showContextView = false
+    @State private var navigateToMainView = false // State variable to control navigation
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        ZStack {
+            Image("Hogwarts")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+            
+            if showContextView {
+                ImageWithText()
+                    .transition(.scale)
+                    .padding(.bottom, 80)
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        navigateToMainView = true // Set the state variable to trigger navigation
+                    }) {
+                        Text("Начать")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(10)
                     }
+                    .padding(.bottom, 50)
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                .fullScreenCover(isPresented: $navigateToMainView) {
+                    MainView()
                 }
             }
-            Text("Select an item")
+            
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                showContextView = true
             }
         }
+        .onAppear {
+            BackgroundMusicPlayer.shared.playBackgroundMusic()
+        }
+        .onDisappear {
+            BackgroundMusicPlayer.shared.stopBackgroundMusic()
+        }
     }
+}
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+struct ImageWithText: View {
+    @State private var scaleAmount: CGFloat = 0.2 // Initial scale factor
+    var body: some View {
+        ZStack {
+            Image("Paper")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.horizontal, 65)
+            
+            Text("Вы играете роль студента в Хогвартсе, и ваша задача - раскрыть и предотвратить план Бекнар-де-Морта по захвату школы. Вам предстоит пройти через различные уровни,чтобы раскрыть темные замыслы и спасти Хогвартс от неминуемой гибели.")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 150)
+        }
+        .scaleEffect(scaleAmount) // Apply scale effect
+        .animation(.easeInOut(duration: 1.0)) // Add animation modifier
+        .onAppear {
+            withAnimation {
+                scaleAmount = 1.0 // Update the scale factor to animate from small to big
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+
+
+class BackgroundMusicPlayer {
+    static let shared = BackgroundMusicPlayer()
+    private var audioPlayer: AVAudioPlayer?
+    
+    func playBackgroundMusic() {
+        guard let musicURL = Bundle.main.url(forResource: "HedwigsTheme", withExtension: "mp3") else {
+            fatalError("Background music file not found")
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            audioPlayer = try AVAudioPlayer(contentsOf: musicURL)
+            audioPlayer?.numberOfLoops = -1
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play background music:", error.localizedDescription)
+        }
+    }
+    
+    func stopBackgroundMusic() {
+        audioPlayer?.stop()
+    }
+}
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
