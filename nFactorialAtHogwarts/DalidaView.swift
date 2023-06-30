@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct DalidaView: View {
     @State private var isAnimating = false

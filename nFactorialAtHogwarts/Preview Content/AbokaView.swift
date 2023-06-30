@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AbokaView: View {
     @State private var showAbokaNotFound = false
+    @State private var showFlappyStudentGame = false
     
     var body: some View {
         VStack {
             if showAbokaNotFound {
-                AbokaNotFound()
+                AbokaNotFound(showFlappyStudentGame: $showFlappyStudentGame)
             } else {
                 LoadingView()
                     .onAppear {
@@ -55,6 +56,8 @@ struct LoadingView: View {
 }
 
 struct AbokaNotFound: View {
+    @Binding var showFlappyStudentGame: Bool
+    
     var body: some View {
         VStack {
             Image("Aboka")
@@ -72,7 +75,7 @@ struct AbokaNotFound: View {
                 .padding(.horizontal)
             
             Button(action: {
-                // Action to perform when the button is tapped
+                showFlappyStudentGame = true
             }) {
                 ZStack {
                     Capsule()
@@ -84,6 +87,9 @@ struct AbokaNotFound: View {
                 }
                 .padding(.top, 50)
                 .padding(.horizontal)
+            }
+            .fullScreenCover(isPresented: $showFlappyStudentGame) {
+                ContentView()
             }
         }
     }
