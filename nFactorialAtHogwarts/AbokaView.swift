@@ -89,7 +89,7 @@ struct AbokaNotFound: View {
                 .padding(.horizontal)
             }
             .fullScreenCover(isPresented: $showFlappyStudentGame) {
-                ContentView()
+                FlubbyGameView()
             }
         }
     }

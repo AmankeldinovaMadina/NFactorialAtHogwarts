@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameOver = false
 
     var timer = Timer()
+    var gameTimer: Timer?
     var playingDuration: TimeInterval = 0
 
     enum ColliderType: UInt32 {
@@ -39,7 +40,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view?.addGestureRecognizer(tapGesture)
+        startTimer()
+
     }
+    
+    func startTimer() {
+          gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingDuration), userInfo: nil, repeats: true)
+      }
     
     @objc func updatePlayingDuration() {
         playingDuration += 1
@@ -206,7 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 }
 
-struct ContentView: View {
+struct FlubbyGameView: View {
     var body: some View {
         GameView()
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -214,8 +221,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FlubbyGameView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FlubbyGameView()
     }
 }
