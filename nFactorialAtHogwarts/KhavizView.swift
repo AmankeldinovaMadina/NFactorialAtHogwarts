@@ -1,12 +1,8 @@
 import SwiftUI
 
 struct KhavizView: View {
-    @State private var isAnimating = false
-    @State private var animatedText: [String] = []
     @State private var showGameFlappy = false
     let KhavizText = "Вы блестяще преодолели все испытания, и теперь вы готовы получить эту волшебную палочку и вступить в схватку с легендарным Бекнаром Де Мортом."
-    
-    @State private var showAboka = false
     
     var body: some View {
         ZStack {
@@ -21,18 +17,11 @@ struct KhavizView: View {
                 .frame(width: 450, height: 500)
                 .offset(y: -130)
             
-            if animatedText.joined(separator: " ") == KhavizText {
-                Text(animatedText.joined(separator: " "))
-                    .frame(width: 300, height: 480)
-                    .font(.system(size: 18, weight: .semibold))
-                    .offset(y: -150)
-                    .multilineTextAlignment(.center)
-                    .onAppear {
-                        if animatedText.isEmpty {
-                            startTypingText()
-                        }
-                    }
-            }
+            Text(KhavizText)
+                .frame(width: 300, height: 480)
+                .font(.system(size: 18, weight: .semibold))
+                .offset(y: -150)
+                .multilineTextAlignment(.center)
             
             VStack {
                 Spacer()
@@ -65,19 +54,7 @@ struct KhavizView: View {
                 .padding(.leading, 250)
             }
             .fullScreenCover(isPresented: $showGameFlappy) {
-                AbokaView()
-            }
-        }
-    }
-    
-    private func startTypingText() {
-        let words = KhavizText.components(separatedBy: .whitespaces)
-        var currentIndex = 0
-        Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
-            if currentIndex < words.count {
-                animatedText.append(words[currentIndex])
-                currentIndex += 1
-                
+                GameVieww()
             }
         }
     }

@@ -57,6 +57,10 @@ struct LoadingView: View {
 
 struct AbokaNotFound: View {
     @Binding var showFlappyStudentGame: Bool
+    @State private var showKhavizView = false
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var timer: Timer? = nil
     
     var body: some View {
         VStack {
@@ -76,6 +80,11 @@ struct AbokaNotFound: View {
             
             Button(action: {
                 showFlappyStudentGame = true
+                timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
+                    timer?.invalidate()
+                    showFlappyStudentGame = false 
+                    showKhavizView = true
+                }
             }) {
                 ZStack {
                     Capsule()
@@ -90,6 +99,9 @@ struct AbokaNotFound: View {
             }
             .fullScreenCover(isPresented: $showFlappyStudentGame) {
                 FlubbyGameView()
+            }
+            .fullScreenCover(isPresented: $showKhavizView) {
+                KhavizView()
             }
         }
     }

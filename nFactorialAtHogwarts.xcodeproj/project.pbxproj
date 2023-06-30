@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0704672A4E9ACD00A73949 /* scaredAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F0704662A4E9ACD00A73949 /* scaredAudio.mp3 */; };
+		4F0704692A4E9AD800A73949 /* mountainSearch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F0704682A4E9AD800A73949 /* mountainSearch.mp3 */; };
+		4F07046B2A4E9AE100A73949 /* tamak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F07046A2A4E9AE100A73949 /* tamak.mp3 */; };
+		4F07046D2A4E9AEA00A73949 /* tyshesumasoshel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F07046C2A4E9AEA00A73949 /* tyshesumasoshel.mp3 */; };
 		FE00D0092A4DDF4A0090276A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D0082A4DDF4A0090276A /* MainView.swift */; };
 		FE10D9A92A4E2B9300CAF339 /* DalidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10D9A82A4E2B9300CAF339 /* DalidaView.swift */; };
 		FE3359A32A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3359A22A4DBB280076B3D1 /* nFactorialAtHogwartsApp.swift */; };
@@ -44,6 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F0704662A4E9ACD00A73949 /* scaredAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scaredAudio.mp3; sourceTree = "<group>"; };
+		4F0704682A4E9AD800A73949 /* mountainSearch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mountainSearch.mp3; sourceTree = "<group>"; };
+		4F07046A2A4E9AE100A73949 /* tamak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tamak.mp3; sourceTree = "<group>"; };
+		4F07046C2A4E9AEA00A73949 /* tyshesumasoshel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tyshesumasoshel.mp3; sourceTree = "<group>"; };
+		4F07046E2A4E9B1700A73949 /* TiredAudio 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiredAudio 2.m4a"; sourceTree = "<group>"; };
+		4F07046F2A4E9B3500A73949 /* sleep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = sleep.m4a; path = nFactorialAtHogwarts/Assets.xcassets/Sleep.mp3.dataset/sleep.m4a; sourceTree = SOURCE_ROOT; };
 		FE00D0082A4DDF4A0090276A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FE10D9A82A4E2B9300CAF339 /* DalidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalidaView.swift; sourceTree = "<group>"; };
 		FE33599F2A4DBB280076B3D1 /* nFactorialAtHogwarts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nFactorialAtHogwarts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +170,12 @@
 		FE3359D12A4DC52B0076B3D1 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				4F07046C2A4E9AEA00A73949 /* tyshesumasoshel.mp3 */,
+				4F0704682A4E9AD800A73949 /* mountainSearch.mp3 */,
+				4F07046F2A4E9B3500A73949 /* sleep.m4a */,
+				4F07046A2A4E9AE100A73949 /* tamak.mp3 */,
+				4F07046E2A4E9B1700A73949 /* TiredAudio 2.m4a */,
+				4F0704662A4E9ACD00A73949 /* scaredAudio.mp3 */,
 				FE3359D22A4DC5500076B3D1 /* HedwigsTheme.mp3 */,
 			);
 			path = Media;
@@ -270,8 +286,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE3359AA2A4DBB2C0076B3D1 /* Preview Assets.xcassets in Resources */,
+				4F07046D2A4E9AEA00A73949 /* tyshesumasoshel.mp3 in Resources */,
+				4F0704672A4E9ACD00A73949 /* scaredAudio.mp3 in Resources */,
 				FE3359A72A4DBB2C0076B3D1 /* Assets.xcassets in Resources */,
 				FE3359D32A4DC5510076B3D1 /* HedwigsTheme.mp3 in Resources */,
+				4F0704692A4E9AD800A73949 /* mountainSearch.mp3 in Resources */,
+				4F07046B2A4E9AE100A73949 /* tamak.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
