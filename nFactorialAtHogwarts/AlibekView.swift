@@ -1,10 +1,3 @@
-//
-//  AlibekView.swift
-//  nFactorialAtHogwarts
-//
-//  Created by Madina Amankeldinova on 30.06.2023.
-//
-
 import SwiftUI
 
 struct AlibekView: View {
