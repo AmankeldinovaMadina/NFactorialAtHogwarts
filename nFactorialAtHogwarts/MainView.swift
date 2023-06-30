@@ -1,15 +1,11 @@
-//
-//  MainView.swift
-//  nFactorialAtHogwarts
-//
-//  Created by Акбала Тлеугалиева on 29.06.2023.
-
 import SwiftUI
 
 struct MainView: View {
     @State private var animatedText: String = ""
+    @State private var showDalida = false 
     private let fullText = "Привет, ученики Хогвартса! Я, Профессор Арман Дамблдор, рад приветствовать вас в этом удивительном месте волшебства. Выберите свой дом и направление: Mobile, Frontend, Backend или ML. Путешествие в мире волшебного программирования ждет вас! Исследуйте, творите и достигайте вершин!"
     @State private var showSchoolOptions: Bool = false
+
     var body: some View {
         ZStack {
             Image("Hogwarts2")
@@ -22,10 +18,23 @@ struct MainView: View {
                 .onAppear {
                     startTyping()
                 }
+            VStack{
+                Button(action: {
+                    showDalida = true 
+                }) {
+                    Image(systemName: "chevron.right.2")
+                        .foregroundColor(.black)
+                }
+                .padding(.top, 350)
+                .padding(.leading, 300)
+            }
+            .fullScreenCover(isPresented: $showDalida) {
+                DalidaView()
+            }
         }
     }
 
-    private func startTyping() {
+    public func startTyping() {
         var currentIndex = 0
         Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
             if currentIndex < fullText.count {
@@ -40,9 +49,10 @@ struct MainView: View {
 
 struct ImageWithPerson: View {
     var animatedText: String
-    @State var showSchoolOptions: Bool  // Updated to a variable
-    @State private var scaleAmount: CGFloat = 0.2 // Initial scale factor
-
+    @State var showSchoolOptions: Bool
+    @State private var scaleAmount: CGFloat = 0.2
+    @State private var tapCount: Int = 0
+   
     var body: some View {
         ZStack {
             ZStack {
@@ -69,13 +79,20 @@ struct ImageWithPerson: View {
                 .frame(width: 260, height: 320)
                 .aspectRatio(contentMode: .fit)
                 .offset(x: 100, y: 300)
+            Text("Арман Дамблдор")
+                .font(.system(size: 30, weight: .semibold))
+                .foregroundColor(.white)
+                .offset(x:60, y:350)
                 .onTapGesture {
-                    self.showSchoolOptions = true
-                    // when i tap the first time change the text to  SchoolOptionsView()
+                    tapCount += 1
+                    if tapCount >= 2 {
+                        self.showSchoolOptions = true
+                    }
                 }
         }
     }
 }
+
 
 
 struct SchoolOptionsView: View {
@@ -88,22 +105,22 @@ struct SchoolOptionsView: View {
                 .foregroundColor(.black)
             RadioButtonView(title: "Frontend", isSelected: selectedOption == "a") {
                 selectedOption = "a"
-                // Action for option A
+              
             }
             
             RadioButtonView(title: "Backend", isSelected: selectedOption == "b") {
                 selectedOption = "b"
-                // Action for option B
+              
             }
             
             RadioButtonView(title: "Mobile", isSelected: selectedOption == "c") {
                 selectedOption = "c"
-                // Action for option C
+             
             }
             
             RadioButtonView(title: "ML", isSelected: selectedOption == "d") {
                 selectedOption = "d"
-                // Action for option D
+            
             }
         }
         .multilineTextAlignment(.center)

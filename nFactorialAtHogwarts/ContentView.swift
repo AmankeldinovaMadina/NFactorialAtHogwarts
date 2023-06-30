@@ -1,16 +1,9 @@
-//
-//  ContentView.swift
-//  nFactorialAtHogwarts
-//
-//  Created by Акбала Тлеугалиева on 29.06.2023.
-//
-
 import SwiftUI
 import AVKit
 
 struct ContentView: View {
     @State private var showContextView = false
-    @State private var navigateToMainView = false // State variable to control navigation
+    @State private var navigateToMainView = false
     var body: some View {
         ZStack {
             Image("Hogwarts")
@@ -25,7 +18,7 @@ struct ContentView: View {
                 VStack {
                     Spacer()
                     Button(action: {
-                        navigateToMainView = true // Set the state variable to trigger navigation
+                        navigateToMainView = true
                     }) {
                         Text("Начать")
                             .font(.headline)
@@ -58,7 +51,7 @@ struct ContentView: View {
 }
 
 struct ImageWithText: View {
-    @State private var scaleAmount: CGFloat = 0.2 // Initial scale factor
+    @State private var scaleAmount: CGFloat = 0.2
     var body: some View {
         ZStack {
             Image("Paper")
@@ -72,11 +65,11 @@ struct ImageWithText: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 150)
         }
-        .scaleEffect(scaleAmount) // Apply scale effect
-        .animation(.easeInOut(duration: 1.0)) // Add animation modifier
+        .scaleEffect(scaleAmount)
+        .animation(.easeInOut(duration: 1.0))
         .onAppear {
             withAnimation {
-                scaleAmount = 1.0 // Update the scale factor to animate from small to big
+                scaleAmount = 1.0 
             }
         }
     }
