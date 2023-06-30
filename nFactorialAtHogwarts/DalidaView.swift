@@ -6,11 +6,10 @@ struct DalidaView: View {
     @State private var animatedText = ""
     @State private var animatedSecondText = ""
     @State private var showFirstSteps = false
-    @State private var showAlibek = false 
+    @State private var showAlibek = false
     let text = "Балапан, великая опасность надвигается на Хогвартс! Бекнар-де-Морт, злоумышленник, стремится захватить нашу школу. Но не всё потеряно! Ваш выбор определит исход событий и судьбу Хогвартса."
-    
     let secondText = "Теперь вам нужно улучшаться каждый день и, несмотря на выходные и праздники always be coding.Теперь вступайте в свою группу и получите своё первое задание.Буду ждать вашего первого результата на этой неделе, балапашка."
-    
+
     var body: some View {
         ZStack {
             Image("Hogwarts4")
@@ -18,12 +17,12 @@ struct DalidaView: View {
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
                 .frame(height: 950)
-            
+
             Image("Paper")
                 .resizable()
                 .frame(width: 400, height: 350)
                 .offset(y: -130)
-            
+
             if animatedText == text && !showFirstSteps {
                 Text(animatedSecondText)
                     .frame(width: 300, height: 480)
@@ -51,14 +50,14 @@ struct DalidaView: View {
                             startTypingText()
                         }
                 } else {
-                    FirstSteps()
-                        .offset(x:50, y:-100)
+                    FirstView()
+                        .offset(x: 50, y: -160)
                 }
             }
-            
+
             VStack {
                 Spacer()
-                ZStack{
+                ZStack {
                     Image("Dalida")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -67,10 +66,10 @@ struct DalidaView: View {
                     Text("Далида-гонагалл")
                         .font(.system(size: 30, weight: .semibold))
                         .foregroundColor(.white)
-                        .offset(x:60, y:150)
+                        .offset(x: 60, y: 150)
                 }
             }
-            VStack{
+            VStack {
                 Button(action: {
                     showAlibek = true
                 }) {
@@ -85,7 +84,7 @@ struct DalidaView: View {
             }
         }
     }
-    
+
     private func startTypingText() {
         var currentIndex = 0
         Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
@@ -97,7 +96,7 @@ struct DalidaView: View {
             }
         }
     }
-    
+
     private func startTypingSecondText() {
         var currentIndex = 0
         Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
@@ -117,8 +116,7 @@ struct DalidaView_Previews: PreviewProvider {
     }
 }
 
-
-struct FirstSteps: View {
+struct FirstView: View {
     @State private var selectedOption: String = ""
 
     var body: some View {
@@ -128,27 +126,40 @@ struct FirstSteps: View {
                 .foregroundColor(.black)
             RadioButtonView(title: "Поиграть мафию с другими студентами", isSelected: selectedOption == "a") {
                 selectedOption = "a"
-              
+                playSound(named: "tyshesumasoshel")
             }
-            
+
             RadioButtonView(title: "Пойти поспать в общежитию", isSelected: selectedOption == "b") {
                 selectedOption = "b"
-              
+                playSound(named: "sleep")
             }
-            
+
             RadioButtonView(title: "Подойти к преподавателю", isSelected: selectedOption == "c") {
                 selectedOption = "c"
-             
             }
-            
+
             RadioButtonView(title: "Покушать в тамак", isSelected: selectedOption == "d") {
                 selectedOption = "d"
-            
+                playSound(named: "tamak")
             }
         }
         .multilineTextAlignment(.center)
         .padding(.horizontal, 150)
     }
+
+    private func playSound(named name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("Sound file not found.")
+            return
+        }
+
+        do {
+            let url = URL(fileURLWithPath: path)
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            player.play()
+        } catch let error {
+            print("Error playing sound: \(error.localizedDescription)")
+        }
+    }
 }
-
-
